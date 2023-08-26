@@ -1,0 +1,11 @@
+.select {
+  // Select button style
+  & :global(.ant-select-selection-item) {
+    background: var(--primary) !important;
+    color: var(--white);
+    // Close icon
+    & :global(.ant-select-selection-item-remove) {
+      color: var(--white) !important;
+    }
+  }
+}

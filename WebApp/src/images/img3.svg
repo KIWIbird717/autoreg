@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_2" data-name="Слой 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 91.44 72.74">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #ffa000;
+      }
+
+      .cls-3 {
+        fill: #43a047;
+      }
+
+      .cls-4 {
+        fill: url(#_Безымянный_градиент_5);
+      }
+    </style>
+    <linearGradient id="_Безымянный_градиент_5" data-name="Безымянный градиент 5" x1="38.23" y1="60.11" x2="38.68" y2="11.01" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffca28"/>
+      <stop offset="1" stop-color="#ffca28"/>
+    </linearGradient>
+  </defs>
+  <g id="_Слой_1-2" data-name="Слой 1">
+    <g>
+      <g>
+        <path class="cls-2" d="M69.23,7.69H34.62L26.92,0H7.69C3.46,0,0,3.46,0,7.69v15.38H76.92v-7.69c0-4.23-3.46-7.69-7.69-7.69Z"/>
+        <path class="cls-4" d="M69.23,7.69H7.69C3.46,7.69,0,11.15,0,15.38V53.85c0,4.23,3.46,7.69,7.69,7.69h61.54c4.23,0,7.69-3.46,7.69-7.69V15.38c0-4.23-3.46-7.69-7.69-7.69Z"/>
+      </g>
+      <g>
+        <circle class="cls-3" cx="71.38" cy="52.69" r="20.06"/>
+        <g>
+          <rect class="cls-1" x="67.33" y="40.69" width="8.1" height="24"/>
+          <rect class="cls-1" x="67.33" y="40.64" width="8.1" height="24" transform="translate(124.02 -18.75) rotate(90)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

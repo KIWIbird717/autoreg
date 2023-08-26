@@ -1,0 +1,67 @@
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary: #1777FF;
+  --primaryLight: #c7c2e9;
+  --background: #F7F9FD;
+  --white: #fff;
+  --success: rgb(137, 217, 127);
+  --warning: rgb(231, 218, 103);
+  --font: #393D55;
+  --dopFont2: #f6f6f6;
+}
+
+/* Global Styles for antd Table component */
+.ant-table-tbody > tr:hover > td {
+  background-color: var(--white) !important;
+}
+
+/* Global Style for editable Text component */
+h2.ant-typography .anticon-edit {
+  color: var(--primary);
+  font-size: 20px;
+  margin-left: 3px;
+}
+h3.ant-typography .anticon-edit {
+  color: var(--primary);
+  font-size: 17px;
+  margin-left: 3px;
+}
+h5.ant-typography .anticon-edit {
+  color: var(--primary);
+  font-size: 15px;
+  margin-left: 3px;
+}
+
+.editable-cell {
+  position: relative;
+}
+
+.editable-cell-value-wrap {
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.editable-row:hover .editable-cell-value-wrap {
+  padding: 4px 11px;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+}
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Inter',
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+

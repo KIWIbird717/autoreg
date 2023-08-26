@@ -1,0 +1,12 @@
+.slider_driwer_folder {
+  transition: background .1s linear;
+  cursor: pointer;
+}
+
+.slider_driwer_folder:hover {
+  background-color: var(--dopFont2);
+}
+
+.avatar_uploader {
+  width: fit-content !important;
+}

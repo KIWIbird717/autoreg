@@ -1,0 +1,14 @@
+.editable-row .ant-form-item-explain {
+  position: absolute;
+  top: 100%;
+  font-size: 12px;
+}
+
+.folder_style {
+  cursor: pointer;
+  transition: background .1s linear;
+}
+
+.folder_style:hover {
+  background-color: var(--dopFont2);
+}

@@ -1,0 +1,84 @@
+{
+  "name": "telegram-bot",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ant-design/colors": "^7.0.0",
+    "@ant-design/icons": "^5.0.1",
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.1",
+    "antd": "^5.4.2",
+    "dayjs": "^1.11.7",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^7.10.3",
+    "lodash.debounce": "^4.0.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-highlight-words": "^0.20.0",
+    "react-lottie": "^1.2.3",
+    "react-quill": "^2.0.0",
+    "react-router-dom": "^6.10.0",
+    "react-scripts": "5.0.1",
+    "react-use-websocket": "^4.3.1",
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/file-saver": "^2.0.5",
+    "@types/jest": "^27.5.2",
+    "@types/lodash.debounce": "^4.0.7",
+    "@types/node": "^16.18.23",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "@types/react-highlight-words": "^0.16.4",
+    "@types/react-lottie": "^1.2.6",
+    "@types/react-redux": "^7.1.25",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/xlsx": "^0.0.36",
+    "axios": "^1.3.5",
+    "cors": "^2.8.5",
+    "isexe": "^3.1.1",
+    "lodash": "^4.17.21",
+    "merge-stream": "^2.0.0",
+    "mimic-fn": "^4.0.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2",
+    "sass": "^1.64.1",
+    "shebang-regex": "^4.0.0",
+    "strip-final-newline": "^3.0.0",
+    "tailwindcss": "^3.3.1",
+    "typescript": "^4.9.5"
+  }
+}
