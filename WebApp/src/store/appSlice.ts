@@ -6,6 +6,7 @@ const initialState: IAppState = {
   accountsManagerFolder: null,
   proxyManagerFolder: null,
   parseManagerFolder: null,
+  distributionMessages: null,
   userAvatar: null,
   smsServisies: null,
   smsServiciesData: null,

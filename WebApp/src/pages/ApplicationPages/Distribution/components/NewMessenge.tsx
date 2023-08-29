@@ -11,14 +11,14 @@ interface IProps {
 export const NewMessenge = ({ popoverTitle }: IProps) => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-[8rem] p-3 hover:bg-[#e6e6ee] rounded">
+      <div className="flex flex-col gap-3 items-center justify-center w-[8rem] p-3 hover:bg-[#e6e6ee] rounded">
         <div className="flex items-center justify-center">
           <FileTextTwoTone
             type="primary"
-            style={{ fontSize: "68px", width: "68px", color: colors.primary }}
+            style={{ fontSize: "58px", color: colors.primary }}
           />
         </div>
-        <div className="flex justify-center text-center">{popoverTitle}</div>
+        <div style={{ lineHeight: 1.1 }} className="flex justify-center text-center">{popoverTitle}</div>
       </div>
     </>
   );

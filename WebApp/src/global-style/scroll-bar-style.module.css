@@ -7,12 +7,12 @@
 
 /* Track */
 .scroll_bar_style::-webkit-scrollbar-track {
-  background-color: #f7f4f8;
+  background-color: #E6F4FF;
   border-radius: 10px;
 }
 
 /* Handle */
 .scroll_bar_style::-webkit-scrollbar-thumb {
-  background: var(--primaryLight);
+  background: #6097F6;
   border-radius: 10px;
 }

@@ -5,17 +5,13 @@ import { HeaderComponent } from "../../../components/HeaderComponent/HeaderCompo
 import { Content } from "antd/es/layout/layout";
 import { DistributionSetting } from "./DistrCard/DistributionSettingCard/DistributionSetting";
 import { DistributionMessage } from "./DistrCard/MyDistributionMessenge/DistributionMessage";
-import { TextEditor } from "./DistrCard/TextEditor/TextEditor";
+import { MessageEditor } from "./MessageEditor/MessageEditor";
 import { parsingFoldersFromDB } from "../ParsingPage/ParseFolders/Folders";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../../store/store";
 
-export const DistributoionPage = ({
-  style,
-}: {
-  style?: React.CSSProperties;
-}) => {
+export const DistributoionPage = ({ style }: { style?: React.CSSProperties }) => {
   const dispatch = useDispatch();
   const userMail = useSelector((state: StoreState) => state.user.mail);
 
@@ -37,7 +33,7 @@ export const DistributoionPage = ({
               <DistributionMessage />
             </div>
             <div className="mt-5">
-              <TextEditor />
+              <MessageEditor />
             </div>
           </Col>
         </Row>

@@ -1,0 +1,63 @@
+
+
+.uploaderWrapper {
+  & span :global(.ant-upload-list) {
+    display: inline-flex;
+  }
+
+  & span :global(.ant-upload-list) div {
+    scroll-snap-align: end !important;
+  }
+}
+
+.toolBar {
+  // toolbar customisation
+  border: 0px !important;
+
+  :global(#ql-monospace) {
+    font-weight: 800;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  span {
+    display: flex !important;
+    gap: 5px;
+
+    button {
+      height: 28px !important;
+      width: 28px !important;
+      padding: 5px 5px !important;
+      border: 1px solid #ccc !important;
+      border-radius: 5px;
+    } 
+    button:global(.ql-active) {
+      border: 1px solid #06c !important;
+    }
+  }
+}
+
+.textEditor {
+  // text-eeditor customisation
+  & :global(.ql-container) {
+    border-top: 1px solid #ccc !important;
+    border: 1px  solid #ccc;
+    border-radius: 7px;
+    min-height: 250px;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+  & :global(.ql-container) :global(.ql-editor) {
+    min-height: 248px;
+  }
+  & :global(.ql-container)::-webkit-scrollbar {
+    width: 3px;
+  }
+  & :global(.ql-container)::-webkit-scrollbar-track {
+    background-color: #E6F4FF;
+    border-radius: 10px;
+  }
+  & :global(.ql-container)::-webkit-scrollbar-thumb {
+    background: #6097F6;
+    border-radius: 10px;
+  }
+}

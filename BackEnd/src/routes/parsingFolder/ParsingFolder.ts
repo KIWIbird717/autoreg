@@ -10,7 +10,6 @@ router.post('/add-new-folder', async (req: Request, res: Response) => {
   try {
     const { mail } = req.body
     const folder = req.body.folder
-    console.log(folder)
 
     const result = await RegisterUserSchema.updateOne(
       { mail: mail },

@@ -1,4 +1,4 @@
-import { Schema, Model, model, Document } from "mongoose";
+import mongoose, { Schema, Model, model, Document } from "mongoose";
 import { ErrorService, ErrorType} from "../../utils/errorHandler";
 
 
@@ -372,4 +372,4 @@ const registerUserSchema: Schema = new Schema(
  * @description
  * Registrate new user in application
  */
-export const RegisterUserSchema: IRegisterUserModel = model<IRegisterUserSchema>("RegisterUserSchema", registerUserSchema)
+export const RegisterUserSchema: IRegisterUserModel = mongoose.models.RegisterUserSchema || model<IRegisterUserSchema>("RegisterUserSchema", registerUserSchema)

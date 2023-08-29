@@ -134,9 +134,16 @@ export interface ILogs {
   list_logs: IListLogs[]
 }
 
+export interface IDistributionMEssage {
+  id: React.Key
+  title: string
+  text: string
+}
+
 export interface IAppState {
   appPage: '1' | '2' | '3' | '4' | '5' | '6' | '7' | string
   accountsManagerFolder: React.Key | null
+  distributionMessages: IDistributionMEssage[] | null
   proxyManagerFolder: React.Key | null
   parseManagerFolder: React.Key | null
   userAvatar: string | null

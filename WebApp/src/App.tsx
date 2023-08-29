@@ -26,6 +26,7 @@ import {
 import axios from 'axios'
 import { IProxyData } from './pages/ApplicationPages/ProxyManager/ParseAccountsTable';
 import { IProxyHeaderType } from './pages/ApplicationPages/ProxyManager/Collumns';
+import "quill/dist/quill.snow.css"
 
 
 export interface ILocalStorageParced {
@@ -199,7 +200,7 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/registration" element={<Registration />}/>
       <Route path="/" element={<Logining />}/>
-      <Route path="/app*" element={<Application />}/>
+      <Route path="/app/*" element={<Application />}/>
     </Routes>
   )
 }
