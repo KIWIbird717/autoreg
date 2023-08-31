@@ -57,7 +57,8 @@ router.post('/new-distribution', async (req: Request, res: Response) => {
       createdAt,
       updatedAt
     })
-    const svaedSenderConfig = senderConfig.save();
+    const svaedSenderConfig = await senderConfig.save();
+    console.log(svaedSenderConfig)
   
     return res.status(200).json({ message: "Successfully added new sender config", senderConfigData: svaedSenderConfig })
   } catch (err) {

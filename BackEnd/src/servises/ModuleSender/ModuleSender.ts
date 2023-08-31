@@ -50,7 +50,7 @@ const ModuleSenderConfigSchema = new Schema<IModuleSenderConfig>({
   updatedAt: { type: Date, default: Date.now },
 }, { timestamps: true, collection: 'modulesenderconfig', versionKey: false });
 
-const ModuleSenderConfig = mongoose.models.ModuleSenderConfig || model<IModuleSenderConfig>('ModuleSenderConfig', ModuleSenderConfigSchema);
+const ModuleSenderConfig = model<IModuleSenderConfig>('modulesenderconfig', ModuleSenderConfigSchema);
 
 // Export the models
 export { ModuleSenderConfig };

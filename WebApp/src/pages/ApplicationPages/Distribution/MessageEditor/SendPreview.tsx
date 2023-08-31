@@ -41,7 +41,7 @@ export const SendPreview = ({ className }: { className?: string }) => {
         type='primary'
         size='large'
       >
-        Добавить в рассылку
+        Добавить сообщение
       </Button>
     </div>
   )

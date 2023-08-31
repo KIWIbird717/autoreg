@@ -11,7 +11,7 @@ interface IProps {
 export const NewMessenge = ({ popoverTitle }: IProps) => {
   return (
     <>
-      <div className="flex flex-col gap-3 items-center justify-center w-[8rem] p-3 hover:bg-[#e6e6ee] rounded">
+      <div className="flex flex-col gap-3 items-center justify-center w-[8rem] p-3 hover:bg-slate-100 rounded-md">
         <div className="flex items-center justify-center">
           <FileTextTwoTone
             type="primary"

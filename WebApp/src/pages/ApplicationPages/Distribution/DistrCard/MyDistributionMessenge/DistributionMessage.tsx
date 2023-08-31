@@ -4,6 +4,8 @@ import { MCard } from "../../../../../components/Card/MCard";
 import { CardTitle } from "../../../../../components/CardTitle/CardTitle";
 import { PlusCircleFilled } from "@ant-design/icons";
 import { NewMessenge } from "../../components/NewMessenge";
+import { useSelector } from "react-redux";
+import type { StoreState } from "../../../../../store/store";
 
 const Context = React.createContext({ name: "Default" });
 
@@ -13,22 +15,7 @@ export const DistributionMessage = () => {
 
   const contextValue = useMemo(() => ({ name: "Ant Design" }), []); // for message component
 
-  const dummyData = {
-    messagesTemplate: [
-      {
-        id: 0,
-        titile: 'Рассылка для newsTV 1'
-      },
-      {
-        id: 1,
-        titile: 'Рассылка для newsTV 2'
-      },
-      {
-        id: 2,
-        titile: 'Рассылка для newsTV 3'
-      },
-    ]
-  }
+  const messages = useSelector((state: StoreState) => state.app.newDistributionMessages.messages)
 
   return (
     <Context.Provider value={contextValue}>
@@ -45,16 +32,20 @@ export const DistributionMessage = () => {
           <CardTitle title="Мои сообщения" />
         </div>
         <div className="w-full flex flex-row justify-start items-baseline">
-          {dummyData.messagesTemplate.map((message) => (
-            <NewMessenge key={message.id} popoverTitle={message.titile} />
+          {messages.map((message) => (
+            <NewMessenge key={message.id} popoverTitle={message.title || ''} />
           ))}
           <div className="flex ml-5">
-            <PlusCircleFilled
-              style={{
-                fontSize: "36px",
-                color: " #e6e6ee",
-              }}
-            />
+            <button 
+              className="w-[8rem] p-3 h-[124px] bg-inherit border-0 hover:bg-slate-100 rounded-md cursor-pointer"
+            >
+              <PlusCircleFilled
+                style={{
+                  fontSize: "36px",
+                  color: " #e6e6ee",
+                }}
+              />
+            </button>
           </div>
         </div>
       </MCard>

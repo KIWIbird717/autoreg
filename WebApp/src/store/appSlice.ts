@@ -1,16 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { IAppState } from "./types"
+import type { IAppState, IModuleSenderConfig } from "./types"
 
 const initialState: IAppState = {
   appPage: '1',
   accountsManagerFolder: null,
   proxyManagerFolder: null,
   parseManagerFolder: null,
-  distributionMessages: null,
   userAvatar: null,
   smsServisies: null,
   smsServiciesData: null,
   logs: null,
+  distributionFolders: null,
+  selectedDistributionFolder: null,
+  newDistributionMessages: {
+    open: null,
+    messages: []
+  }
 }
 
 export const appSlice = createSlice({
@@ -46,7 +51,21 @@ export const appSlice = createSlice({
     },
     setLogs: (state, action: PayloadAction<IAppState["logs"]>) => {
       state.logs = action.payload
-    }
+    },
+
+    setDistributionFolders: (state, action: PayloadAction<IAppState["distributionFolders"]>) => {
+      state.distributionFolders = action.payload;
+    },
+    addDistributionFolder: (state, action: PayloadAction<IModuleSenderConfig>) => {
+      state.distributionFolders?.push(action.payload)
+    },
+
+    setDistributionMessageEdit: (state, action: PayloadAction<IAppState["newDistributionMessages"]["open"]>) => {
+      state.newDistributionMessages.open = action.payload
+    },
+    addNewDistributionMessageToEdit: (state, action: PayloadAction<IAppState["newDistributionMessages"]["messages"][0]>) => {
+      state.newDistributionMessages.messages.push(action.payload)
+    },
   }
 })
 
@@ -59,5 +78,9 @@ export const {
   setSmsServisies,
   setSmsServiciesData,
   setLogs,
+  setDistributionFolders,
+  addDistributionFolder,
+  setDistributionMessageEdit,
+  addNewDistributionMessageToEdit,
 } = appSlice.actions
 export default appSlice.reducer

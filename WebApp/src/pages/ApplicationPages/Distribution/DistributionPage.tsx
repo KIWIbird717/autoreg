@@ -6,19 +6,55 @@ import { Content } from "antd/es/layout/layout";
 import { DistributionSetting } from "./DistrCard/DistributionSettingCard/DistributionSetting";
 import { DistributionMessage } from "./DistrCard/MyDistributionMessenge/DistributionMessage";
 import { MessageEditor } from "./MessageEditor/MessageEditor";
-import { parsingFoldersFromDB } from "../ParsingPage/ParseFolders/Folders";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../../store/store";
+import { MCard } from "../../../components/Card/MCard";
+import { DistributionFolders } from "./DistributionFolders/DistributionFolders";
+import { setDistributionFolders } from "../../../store/appSlice";
+import axios from "axios";
+import { setUserParsingFolders } from "../../../store/userSlice";
 
 export const DistributoionPage = ({ style }: { style?: React.CSSProperties }) => {
   const dispatch = useDispatch();
   const userMail = useSelector((state: StoreState) => state.user.mail);
 
+  // fetch distribution folders data
   useEffect(() => {
-    if (!userMail) return;
-    parsingFoldersFromDB(userMail, dispatch);
-  }, []);
+    try {
+      const controller = new AbortController();
+      const apiUrl = `${process.env.REACT_APP_SERVER_END_POINT}/moduleSender/get-distributions/${userMail}`
+      axios.get(apiUrl, { signal: controller.signal })
+        .then((res) => {
+          if (res.status != 200) return;
+          console.log(res)
+          dispatch(setDistributionFolders(res.data))
+        })
+        .catch((err) => console.error(err))
+  
+      return () => {
+        controller.abort()
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
+
+  // fetch parsed folders data
+  useEffect(() => {
+    try {
+      const controller = new AbortController()
+      const apiUrl = `${process.env.REACT_APP_SERVER_END_POINT}/parsingFolder/get-pasing-folders/${userMail}`
+      axios.get(apiUrl, { signal: controller.signal })
+        .then((res) => dispatch(setUserParsingFolders(res.data)))
+        .catch((error) => console.error(error))
+      return () => {
+        controller.abort()
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }, [])
 
   return (
     <Layout style={{ ...contentStyle, ...style }}>
@@ -37,6 +73,9 @@ export const DistributoionPage = ({ style }: { style?: React.CSSProperties }) =>
             </div>
           </Col>
         </Row>
+        <MCard>
+          <DistributionFolders />
+        </MCard>
       </Content>
     </Layout>
   );
