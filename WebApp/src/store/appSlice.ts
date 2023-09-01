@@ -66,6 +66,18 @@ export const appSlice = createSlice({
     addNewDistributionMessageToEdit: (state, action: PayloadAction<IAppState["newDistributionMessages"]["messages"][0]>) => {
       state.newDistributionMessages.messages.push(action.payload)
     },
+    deleteDistributionMessageEdit: (state, action: PayloadAction<IAppState["newDistributionMessages"]["messages"][0]["id"]>) => {
+      state.newDistributionMessages.messages = state.newDistributionMessages.messages.filter((message) => message.id !== action.payload)
+    },
+    updateDistributionMessageEdit: (state, action: PayloadAction<Partial<IAppState["newDistributionMessages"]["messages"][0]>>) => {
+      if (action.payload.id === undefined) return;
+      const editIndex = state.newDistributionMessages.messages.map((message, index) => { 
+        if (message.id == action.payload.id) return index 
+      }).filter((el) => el !== undefined)
+      
+      const editedMessage = state.newDistributionMessages.messages[editIndex[0] as number]
+      state.newDistributionMessages.messages[editIndex[0] as number] = Object.assign({}, { ...editedMessage, ...action.payload }) as IAppState["newDistributionMessages"]["messages"][0]
+    },
   }
 })
 
@@ -82,5 +94,7 @@ export const {
   addDistributionFolder,
   setDistributionMessageEdit,
   addNewDistributionMessageToEdit,
+  deleteDistributionMessageEdit,
+  updateDistributionMessageEdit,
 } = appSlice.actions
 export default appSlice.reducer

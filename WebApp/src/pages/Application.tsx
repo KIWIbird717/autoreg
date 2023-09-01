@@ -65,13 +65,13 @@ export const Application = (): JSX.Element => {
     protocols: userToken as string,
     onMessage: (event) => {
       const res = JSON.parse(event.data)
-      console.log(new Blob([JSON.stringify(event.data)]).size / 1_000_000, 'mb')  // get size of data in mb
+      // console.log(new Blob([JSON.stringify(event.data)]).size / 1_000_000, 'mb')  // get size of data in mb
       if (res.status == 200) {
         // Chek if response not the same as prev
         if (logsRef.current !== JSON.stringify(res.data)) {
           // set new logs to storage
           dispatch(setLogs(res.data))
-          console.log(res.data)
+          // console.log(res.data)
           logsRef.current = JSON.stringify(res.data)
         }
       } else if (res.status == 404) {

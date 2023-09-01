@@ -31,10 +31,11 @@ export const TableHeaders = () => {
 
   const tableHeaders: ColumnsType<IModuleSenderConfig> = [
     {
+      key: 1,
       title: 'Папка',
       dataIndex: 'folder',
       render: (_, record) => (
-        <div className='flex items-center justify-between'>
+        <div key={1} className='flex items-center justify-between'>
           <div 
             className={`${styles.folder_style} w-full flex items-center gap-5 p-2 rounded-md hover:bg-slate-50`}
             // onClick={() => dispatch(setParseManagerFolder(record.key))}
@@ -52,10 +53,11 @@ export const TableHeaders = () => {
       )  
     },
     {
+      key: 2,
       title: 'Действия',
       dataIndex: 'actions',
       render: (_, record) => (
-        <div className='flex justify-end'>
+        <div key={2} className='flex justify-end'>
           <Dropdown
             menu={
               {

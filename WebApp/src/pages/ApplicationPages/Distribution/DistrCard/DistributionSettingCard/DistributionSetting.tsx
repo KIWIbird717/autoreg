@@ -44,6 +44,7 @@ export const DistributionSetting = () => {
   const dispatch = useDispatch()
 
   const userMail = useSelector((state: StoreState) => state.user.mail)
+  const message = useSelector((state: StoreState) => state.app.newDistributionMessages.messages)
   // Bots & Accounts from redux storage
   const bots = useSelector((state: StoreState) => state.user.userManagerFolders);
   const accounts = useSelector((state: StoreState) => state.user.userParsingFolders);
@@ -164,14 +165,14 @@ export const DistributionSetting = () => {
         total_msg_users: distributionConfig.totalMsgAmount.data,
         type_sender: type_senderConverted(distributionType),
         type_target: type_targetConverted(dmOrChat),
-        messages: [
-          {
-            message: 'This is test message for user',
-            media_message_path: "",
-            media_message_type: "text",
-            tpye: "message",
-          }
-        ]
+        messages: message.map((message) => ({
+          message: JSON.stringify(message.rawMessage),
+          media_message_path: "",
+          media_message_type: "text",
+          status: message.status,
+          createdAt: message.createdAt,
+          updatedAt: new Date(),
+        }))
       }
       const api_url = `${process.env.REACT_APP_SERVER_END_POINT}/moduleSender/new-distribution`
       const newFoldersState = await axios.post(api_url, data);
@@ -184,7 +185,6 @@ export const DistributionSetting = () => {
 
 
   const contextValue = useMemo(() => ({ name: "Ant Design" }), []); // for message component
-  console.log(accounts)
   return (
     <Context.Provider value={contextValue}>
       {contextHolder}

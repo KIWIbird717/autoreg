@@ -1,5 +1,6 @@
 import { IHeaderType } from "../pages/ApplicationPages/AccountsManager/Collumns"
 import type { smsServicesTypes } from '../globalTypes'
+import type { DeltaStatic } from "quill"
 
 export interface IParseFolders {
   key: React.Key
@@ -200,10 +201,11 @@ export interface IAppState {
       {
         id: React.Key | null
         convertedMessage: string | null
-        rawMessage: any | null
+        value: Value | null
+        rawMessage: Value | null
         title: string | null
         createdAt: Date | null
-        updatedAp: Date | null
+        updatedAt: Date | null
         status: 'enable' | 'disable' | null
       }[]
   }
