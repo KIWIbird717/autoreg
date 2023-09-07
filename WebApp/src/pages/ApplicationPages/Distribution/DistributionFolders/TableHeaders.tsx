@@ -69,10 +69,11 @@ export const TableHeaders = () => {
                     onClick: () => console.log(this)
                   },
                   {
+                    key: '2',
                     type: 'divider'
                   },
                   {
-                    key: '2',
+                    key: '3',
                     label: 'Удалить',
                     icon: <DeleteOutlined />,
                     danger: true,

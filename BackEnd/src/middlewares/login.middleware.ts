@@ -1,5 +1,7 @@
 import express, { Express, Request, Response } from "express"
 import cors from "cors"
+import bodyParser from 'body-parser'
+import methodOverride from 'method-override'
 
 /**
  * Allows server using `json` formating & unlocks `cors` policy
@@ -10,6 +12,7 @@ import cors from "cors"
 const Middleware = (app: Express): void => {
   app.use(cors())
   app.use(express.json())
+  // app.use(express.urlencoded({ extended: true }));
 
   app.use((req: Request, res: Response, next) => {
     // Website you wish to allow to connect
@@ -23,7 +26,7 @@ const Middleware = (app: Express): void => {
 
     // Pass to next layer of middleware
     next();
-});
+  });
 }
 
 export default Middleware

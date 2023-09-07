@@ -27,7 +27,6 @@ export const DistributoionPage = ({ style }: { style?: React.CSSProperties }) =>
       axios.get(apiUrl, { signal: controller.signal })
         .then((res) => {
           if (res.status != 200) return;
-          console.log(res)
           dispatch(setDistributionFolders(res.data))
         })
         .catch((err) => console.error(err))

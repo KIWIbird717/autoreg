@@ -14,6 +14,7 @@ export interface IAnswer extends Document {
 }
 
 export interface IMSCMessage extends Document {
+  _id: Schema.Types.ObjectId,
   post_link: string,
   message: string,
   media_message_path: string,

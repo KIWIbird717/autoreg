@@ -6,7 +6,6 @@ import {
   Modal,
   Typography,
   notification,
-  Cascader,
   Segmented,
   Col,
   Checkbox,
@@ -25,7 +24,7 @@ import { useSelector } from "react-redux";
 import type { StoreState } from "../../../../../store/store";
 import styles from "../../../Autoreg/folder-selection-style.module.css"
 import { IHeaderType } from "../../../AccountsManager/Collumns";
-import { IParseFolders } from "../../../../../store/types";
+import { IModuleSenderConfig, IParseFolders } from "../../../../../store/types";
 import accountFolderImg from "../../../../../images/accountsFolder.svg"
 import botFolderImg from "../../../../../images/tableCard.svg";
 import axios from "axios";
@@ -66,6 +65,7 @@ export const DistributionSetting = () => {
   const [dmOrChat, setDmOrChat] = useState<"По личкам" | "По чатам" | null>(null)
   const [messageCycling, setMessageCycling] = useState(false);
 
+
   // Distribution config
   interface IDistributionConfig {
     title: { data: string | null, error: boolean }
@@ -93,38 +93,12 @@ export const DistributionSetting = () => {
   
   // firstlly run fields validation, then run handleSubmitDistribution
   const handleFieldsValidation = () => {
-    console.log(distributionConfig)
     handleSubmitDistribution()
   }
 
   // on distribution settings submit
   const handleSubmitDistribution = async () => {
     try {
-      // const data = {
-      //   title: 'Test Sender model №1',
-      //   description: "This is test sender model description",
-      //   user_owner_mail: userMail,
-      //   tg_bots: selectedBotsFolder?._id,
-      //   tg_users: selectedAccountsFolder?._id,
-      //   chats: null,
-      //   shared_users: null,
-      //   status: "created",
-      //   loop_count: 5,
-      //   loop_count_max: 10,
-      //   time_each_loop: 5 * 60 * 1000,
-      //   msg_per_user: 1,
-      //   total_msg_users: 20,
-      //   type_sender: "message",
-      //   type_target: "chats",
-      //   messages: [
-      //     {
-      //       message: 'This is test message for user',
-      //       media_message_path: "",
-      //       media_message_type: "text",
-      //       tpye: "message",
-      //     }
-      //   ]
-      // }
       const type_senderConverted = (distributionType: "Прямое сообщение" | "Репостом" | "Из бота" | null) => {
         switch (distributionType) {
           case 'Из бота':
@@ -168,14 +142,43 @@ export const DistributionSetting = () => {
         messages: message.map((message) => ({
           message: JSON.stringify(message.rawMessage),
           media_message_path: "",
-          media_message_type: "text",
+          media_message_type: message.media ? 'photo' : '',
           status: message.status,
           createdAt: message.createdAt,
           updatedAt: new Date(),
         }))
       }
+
       const api_url = `${process.env.REACT_APP_SERVER_END_POINT}/moduleSender/new-distribution`
       const newFoldersState = await axios.post(api_url, data);
+
+      /**
+       * Conver imager to prepared for distribution type
+       * <distribution_id/message_id/filename>{*.png,*.jpg,*.jpeg}
+       */
+      if (newFoldersState.status != 200) return
+      const distr: IModuleSenderConfig = newFoldersState.data.senderConfigData
+      const preparedMessages = new FormData()
+      if (!distr) return
+      distr.messages.forEach((msg, index) => {
+        if (!message[index].media?.length) return
+        //@ts-ignore
+        message[index].media.forEach((media) => {
+          preparedMessages.append("media", JSON.stringify(Object.assign({}, { ...media, name: `${distr._id}/${msg._id}/${media.name}` })))
+        })
+      })
+
+      const upload_url = `${process.env.REACT_APP_SERVER_END_POINT}/moduleSender/new-distributioni-images`
+      // const uploadedFiles = await axios.post(upload_url, preparedMessages)
+      const format = new FormData()
+      //@ts-ignore
+      if (!message[0].media[0]) return
+      //@ts-ignore
+      console.log(message[0].media[0])
+      //@ts-ignore
+      format.append('media', message[0].media[0])
+      const uploadedFiles = await axios.post(upload_url, format)
+      console.log(uploadedFiles)
 
       dispatch(addDistributionFolder(newFoldersState.data.senderConfigData))
     } catch (err) {
@@ -363,20 +366,6 @@ export const DistributionSetting = () => {
                   }
                 />
               }
-              // item2={
-              //   <div className="w-full flex flex-col gap-1">
-              //     <div className="flex gap-2 items-center">
-              //       <Title level={5} style={{ margin: "0 0" }}>
-              //         Сообщения для рассылки
-              //       </Title>
-              //     </div>
-              //     <Cascader
-              //       placeholder="Мои сообщения"
-              //       size="large"
-              //       className="w-full"
-              //     />
-              //   </div>
-              // }
             />
           </div>
         </div>

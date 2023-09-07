@@ -18,7 +18,7 @@ const MSCMessageSchema = new Schema<IMSCMessage>({
   message: { type: String, default: "" },
   media_message_path: { type: String, default: "" },
   //@ts-ignore
-  media_message_type: { type: String, enum: ['photo', 'video', 'audio', 'document', 'text'], default: "text" },
+  media_message_type: { type: String, enum: ['photo', 'video', 'audio', 'document', 'text'], default: "" },
   type: { type: String, enum: ['replies', 'message'], default: "message" },
   used: { type: Number, default: 0 },
   status: { type: String, enum: ['enable', 'disable'], default: "enable" },

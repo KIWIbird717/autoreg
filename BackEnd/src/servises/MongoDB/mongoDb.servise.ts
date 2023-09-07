@@ -15,8 +15,15 @@ export const dbConnection = async (): Promise<void> => {
   try {
     await mongoose.connect(DB_URL as string)
 
+    // debug mode
+    mongoose.set('debug', true);
+
     const db: Connection = mongoose.connection
     
+    db.on('upload', (log) => {
+      console.log("\x1B[31m", `[MongoDB]: Log. ${log}`)
+    })
+
     db.on('error', (err) => {
       console.error("\x1B[31m", `[MongoDB]: Error. ${err}`)
     })

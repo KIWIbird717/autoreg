@@ -7,12 +7,10 @@ import type { StoreState } from '../../../../store/store'
 
 export const DistributionFolders = () => {
   const distributionFolders = useSelector((state: StoreState) => state.app.distributionFolders);
-
   const [currentFolders, setCurrentFolders] = useState(distributionFolders)
 
   // set current distribution folders
   useEffect(() => {
-    console.log(distributionFolders)
     setCurrentFolders(distributionFolders)
   }, [distributionFolders])
 
@@ -20,6 +18,7 @@ export const DistributionFolders = () => {
     <div>
       <ConfigProvider renderEmpty={NoParseFolders}>
         <Table 
+          key={'sadfasdf'}
           style={{ margin: '0 0' }}
           columns={TableHeaders()}
           dataSource={currentFolders || []}

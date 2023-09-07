@@ -148,6 +148,7 @@ export interface IAnswer {
   answered_ids: string[],
 }
 export interface IMSCMessage {
+  _id: Schema.Types.ObjectId,
   post_link: string,
   message: string,
   media_message_path: string,
@@ -207,6 +208,7 @@ export interface IAppState {
         createdAt: Date | null
         updatedAt: Date | null
         status: 'enable' | 'disable' | null
+        media: UploadFile<any>[] | null
       }[]
   }
 }

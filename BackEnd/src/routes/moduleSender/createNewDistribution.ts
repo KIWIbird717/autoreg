@@ -2,9 +2,25 @@ import express, { Router, Request, Response } from "express";
 import {
   RegisterUserSchema,
 } from "../../servises/RegisterUserDB/registerUserSchema.servise";
+import multer from "multer";
+import path from "path"
 import { ModuleSenderConfig } from "../../servises/ModuleSender/ModuleSender";
 
+
 const router: Router = express.Router();
+
+const storage = multer.diskStorage({
+  destination: (_, __, cb) => {
+    cb(null, path.join(__dirname,'/assets'))
+  },
+  filename: (_, file, cb) => {
+    const extArray = file.mimetype.split("/");
+    const extension = extArray[extArray.length - 1];
+    cb(null, file.fieldname + '-' + Date.now()+ '.' +extension)
+  }
+})
+const upload = multer({ storage: storage })
+
 
 router.post('/new-distribution', async (req: Request, res: Response) => {
   const {
@@ -58,12 +74,17 @@ router.post('/new-distribution', async (req: Request, res: Response) => {
       updatedAt
     })
     const svaedSenderConfig = await senderConfig.save();
-    console.log(svaedSenderConfig)
   
     return res.status(200).json({ message: "Successfully added new sender config", senderConfigData: svaedSenderConfig })
   } catch (err) {
     res.status(500).json({ message: `Internal server error. ${err}` })
   }
+})
+
+router.post('/new-distributioni-images', upload.single('media'), async (req: Request, res: Response) => {
+  console.log(req.body)
+  console.log(req.files)
+  return res.status(200)
 })
 
 

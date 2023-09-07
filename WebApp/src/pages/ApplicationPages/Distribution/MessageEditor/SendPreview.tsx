@@ -6,7 +6,7 @@ import type { StoreState } from '../../../../store/store';
 
 const { Title } = Typography
 
-export const SendPreview = ({ className }: { className?: string }) => {
+export const SendPreview = ({ className, saveDistrImages }: { className?: string, saveDistrImages: () => void}) => {
   const [recieverLink, setRecieverLink] = useState<string | null>(null);
   const [editedMessage, setEditedMessage] = useState<React.Key | null>(null)
 
@@ -54,10 +54,10 @@ export const SendPreview = ({ className }: { className?: string }) => {
       </div>
       <Button 
         className='w-full'
-        type='primary'
         size='large'
+        onClick={saveDistrImages}
       >
-        Сохранить сообщение
+        Сохранить
       </Button>
     </div>
   )

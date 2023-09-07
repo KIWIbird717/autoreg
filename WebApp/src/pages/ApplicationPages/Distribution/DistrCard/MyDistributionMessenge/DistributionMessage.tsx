@@ -39,6 +39,7 @@ export const DistributionMessage = () => {
       createdAt: new Date(),
       updatedAt: new Date(),
       status: 'disable' as 'enable' | 'disable' | null,
+      media: null
     }
     dispatch(addNewDistributionMessageToEdit(initState));
     dispatch(setDistributionMessageEdit(initState.id));
@@ -97,7 +98,7 @@ export const DistributionMessage = () => {
         <div className="flex items-center mb-1">
           <CardTitle title="Мои сообщения" />
         </div>
-        <div className="flex justify-start items-baseline scroll_bar_style snap-mandatory snap-x croll-smooth overflow-auto">
+        <div className="flex gap-1 justify-start items-baseline scroll_bar_style snap-mandatory snap-x croll-smooth overflow-auto">
           {messages.map((message) => (
             <NewMessenge key={message.id} message={message} popoverTitle={message.title || ''} />
           ))}
