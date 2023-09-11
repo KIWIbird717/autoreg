@@ -141,8 +141,7 @@ export const DistributionSetting = () => {
         type_target: type_targetConverted(dmOrChat),
         messages: message.map((message) => ({
           message: JSON.stringify(message.rawMessage),
-          media_message_path: "",
-          media_message_type: message.media ? 'photo' : '',
+          media: message.media?.map((file) => file.name),
           status: message.status,
           createdAt: message.createdAt,
           updatedAt: new Date(),
@@ -153,6 +152,7 @@ export const DistributionSetting = () => {
       const newFoldersState = await axios.post(api_url, data);
 
       /**
+       * @description
        * Conver imager to prepared for distribution type
        * <distribution_id/message_id/filename>{*.png,*.jpg,*.jpeg}
        */
@@ -164,20 +164,12 @@ export const DistributionSetting = () => {
         if (!message[index].media?.length) return
         //@ts-ignore
         message[index].media.forEach((media) => {
-          preparedMessages.append("media", JSON.stringify(Object.assign({}, { ...media, name: `${distr._id}/${msg._id}/${media.name}` })))
+          preparedMessages.append("media", JSON.stringify({ ...media, name: `${distr._id}/${msg._id}/${media.name}` }))
         })
       })
 
       const upload_url = `${process.env.REACT_APP_SERVER_END_POINT}/moduleSender/new-distributioni-images`
-      // const uploadedFiles = await axios.post(upload_url, preparedMessages)
-      const format = new FormData()
-      //@ts-ignore
-      if (!message[0].media[0]) return
-      //@ts-ignore
-      console.log(message[0].media[0])
-      //@ts-ignore
-      format.append('media', message[0].media[0])
-      const uploadedFiles = await axios.post(upload_url, format)
+      const uploadedFiles = await axios.post(upload_url, preparedMessages)
       console.log(uploadedFiles)
 
       dispatch(addDistributionFolder(newFoldersState.data.senderConfigData))

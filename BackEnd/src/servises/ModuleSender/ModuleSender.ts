@@ -16,9 +16,7 @@ const AnswersSchema = new Schema<IAnswer>({
 const MSCMessageSchema = new Schema<IMSCMessage>({
   post_link: { type: String, default: "t.me/..." },
   message: { type: String, default: "" },
-  media_message_path: { type: String, default: "" },
-  //@ts-ignore
-  media_message_type: { type: String, enum: ['photo', 'video', 'audio', 'document', 'text'], default: "" },
+  media: { type: [String], default: [] },
   type: { type: String, enum: ['replies', 'message'], default: "message" },
   used: { type: Number, default: 0 },
   status: { type: String, enum: ['enable', 'disable'], default: "enable" },
