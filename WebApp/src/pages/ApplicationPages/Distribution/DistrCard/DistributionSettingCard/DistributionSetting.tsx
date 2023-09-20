@@ -143,8 +143,8 @@ export const DistributionSetting = () => {
           message: JSON.stringify(message.rawMessage),
           media: message.media?.map((file) => file.name),
           status: message.status,
-          createdAt: message.createdAt,
-          updatedAt: new Date(),
+          createdAt: Number(new Date(message.createdAt || 0)).toString(),
+          updatedAt: Number(new Date()).toString(),
         }))
       }
 

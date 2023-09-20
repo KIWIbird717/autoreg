@@ -21,8 +21,8 @@ export interface IMSCMessage extends Document {
   type: 'replies' | 'message',
   used: number,
   status: 'enable' | 'disable',
-  createdAt: Date,
-  updatedAt: Date,
+  createdAt: string,
+  updatedAt: string,
   answers: IAnswer[],
 }
 
@@ -45,7 +45,7 @@ export interface IModuleSenderConfig extends Document {
   type_target: 'chats' | 'pm',
   messages: IMSCMessage[],
   total_messages_sent: number,
-  createdAt: Date,
-  updatedAt: Date,
+  createdAt: string,
+  updatedAt: string,
   msg_append: (msg: IMSCMessage) => void;
 }

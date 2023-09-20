@@ -20,8 +20,8 @@ const MSCMessageSchema = new Schema<IMSCMessage>({
   type: { type: String, enum: ['replies', 'message'], default: "message" },
   used: { type: Number, default: 0 },
   status: { type: String, enum: ['enable', 'disable'], default: "enable" },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
+  createdAt: { type: String, default: Number(new Date()).toString() },
+  updatedAt: { type: String, default: Number(new Date()).toString() },
   answers: { type: [AnswersSchema], default: [] }
 });
 
@@ -44,8 +44,8 @@ const ModuleSenderConfigSchema = new Schema<IModuleSenderConfig>({
   type_target: { type: String, enum: ["chats", "pm"], default: "chats" },
   messages: { type: [MSCMessageSchema], default: [] },
   total_messages_sent: { type: Number, default: 0 },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
+  createdAt: { type: String, default: Number(new Date()).toString() },
+  updatedAt: { type: String, default: Number(new Date()).toString() },
 }, { timestamps: true, collection: 'modulesenderconfig', versionKey: false });
 
 const ModuleSenderConfig = model<IModuleSenderConfig>('modulesenderconfig', ModuleSenderConfigSchema);
