@@ -24,11 +24,19 @@ export const TextEditor = ({ className }: { className?: string }) => {
   const handleChange = (value: Value, delta: DeltaStatic, source: Sources, editor: UnprivilegedEditor) => {
     if (openedDocument == null || openedDocument == undefined) return;
     if (value === '<p><br></p>') return;
+    // console.log({ value, delta, source, editor: {
+    //   getBounds: editor.getBounds(10),
+    //   getContents: editor.getContents(),
+    //   getHTLM: editor.getHTML(),
+    //   getLenght: editor.getLength(),
+    //   getSelection: editor.getSelection(),
+    //   getText: editor.getText()
+    // } })
     dispatch(updateDistributionMessageEdit(
       { 
         id: editedMessage.id, 
         value: value, 
-        rawMessage: editor.getContents(),  
+        rawMessage: editor.getHTML(),  
       }
     ))
     setState({ value, delta, source, editor });
