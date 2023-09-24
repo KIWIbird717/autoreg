@@ -80,31 +80,26 @@ router.post('/new-distribution', async (req: Request, res: Response) => {
 })
 
 router.post('/new-distributioni-images', multer().none(), async (req: Request, res: Response) => {
-  // parse image data from headers request
-  const media = Object.assign({}, req.body).media.map((media) => JSON.parse(media))
-
-  let keys: string[] = []
-  media.forEach((media) => {
-    // convert image to base64 array
-    const image =  Buffer.from(media.thumbUrl.slice(media.thumbUrl.indexOf(',')), 'base64')
-    const splitedFileName = media.name.split('/')
-    // upload media to buket
-    const bucketKey = `${splitedFileName[0]}/${splitedFileName[1]}/${splitedFileName[2]}`
-    keys.push(bucketKey)
-    const uploadParams = { Bucket: 'tg_media', Key: bucketKey, Body: image }
-    s3.upload({ ...uploadParams }).promise()
-  })
-
-  // setTimeout(() => {
-  //   keys.forEach(async (item) => {
-  //     const uploadParams = { Bucket: 'tg_media', Key: item }
-  //     let object = await s3.getObject({ Bucket: uploadParams.Bucket, Key: uploadParams.Key }).promise()
-  //     console.log(object)
-  //   })
-  // }, 4000);
-
-
-  return res.status(200)
+  try {
+    // parse image data from headers request
+    const media = Object.assign({}, req.body).media.map((media) => JSON.parse(media))
+  
+    let keys: string[] = []
+    media.forEach((media) => {
+      // convert image to base64 array
+      const image =  Buffer.from(media.thumbUrl.slice(media.thumbUrl.indexOf(',')), 'base64')
+      const splitedFileName = media.name.split('/')
+      // upload media to buket
+      const bucketKey = `${splitedFileName[0]}/${splitedFileName[1]}/${splitedFileName[2]}`
+      keys.push(bucketKey)
+      const uploadParams = { Bucket: 'tg_media', Key: bucketKey, Body: image }
+      s3.upload({ ...uploadParams }).promise()
+    })
+  
+    return res.status(200)
+  } catch (error) {
+    console.log(`[SENDER]: ${error}`)
+  }
 })
 
 

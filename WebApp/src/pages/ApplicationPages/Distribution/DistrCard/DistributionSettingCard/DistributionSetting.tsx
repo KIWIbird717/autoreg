@@ -121,7 +121,7 @@ export const DistributionSetting = () => {
             return 'chats'
         
           default:
-            return 'chats'
+            return 'pm'
         }
       }
 
@@ -140,7 +140,7 @@ export const DistributionSetting = () => {
         type_sender: type_senderConverted(distributionType),
         type_target: type_targetConverted(dmOrChat),
         messages: message.map((message) => ({
-          message: JSON.stringify(message.rawMessage),
+          message: message.rawMessage.toString(),
           media: message.media?.map((file) => file.name),
           status: message.status,
           createdAt: Number(new Date(message.createdAt || 0)).toString(),
