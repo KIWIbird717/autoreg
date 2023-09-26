@@ -10,6 +10,7 @@ import axios from "axios";
 import { useSelector } from 'react-redux';
 import { StoreState } from '../../../../store/store';
 import { setDistributionFolders } from '../../../../store/appSlice';
+import startDistribution from './startDistribution';
 
 const { Title } = Typography;
 
@@ -66,7 +67,7 @@ export const TableHeaders = () => {
                     key: '1',
                     label: 'Запустить',
                     icon: <ToTopOutlined />,
-                    onClick: () => console.log(this)
+                    onClick: () => startDistribution(record._id)
                   },
                   {
                     key: '2',

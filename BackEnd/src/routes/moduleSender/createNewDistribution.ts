@@ -117,10 +117,12 @@ router.post('/new-distributioni-images', multer().none(), async (req: Request, r
     })
 
     setTimeout(async () => {
-      const params = { Bucket: 'tg_media', Key: keys[0] }
-      console.log({params})
-      const res = await s3.getObject(params).promise()
-      console.log({ savedFiles: res })
+      keys.forEach(async (key) => {
+        const params = { Bucket: 'tg_media', Key: key }
+        const res = await s3.getObject(params).promise()
+        console.log({params})
+        console.log({ savedFiles: res })
+      })
     }, 5000);
   
     return res.status(200).json({ message: "Files successfully uploaded" })

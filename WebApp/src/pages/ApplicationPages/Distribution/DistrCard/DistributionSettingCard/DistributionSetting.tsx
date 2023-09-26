@@ -649,13 +649,12 @@ export const DistributionSetting = () => {
             loading={buttonLoading}
             onClick={() => handleFieldsValidation()}
             disabled={
-              !distributionConfig.title.data 
-              || !distributionConfig.description.data 
-              || !distributionConfig.telegramChatLink.data 
-              || !distributionConfig.botsFolder.data?._id 
-              || !distributionConfig.accountsFolder.data?._id 
-              || !distributionConfig.totalMsgAmount.data 
-              || !distributionConfig.msgAmountFrom1Bot.data 
+              !distributionConfig.title.data
+              || !distributionConfig.description.data
+              || !distributionConfig.botsFolder.data?._id
+              || !distributionConfig.accountsFolder.data?._id
+              || !distributionConfig.totalMsgAmount.data
+              || !distributionConfig.msgAmountFrom1Bot.data
               || !message.length 
               ? 
                 true 
