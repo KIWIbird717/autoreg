@@ -5,6 +5,7 @@ import {
 import multer from "multer";
 import { ModuleSenderConfig } from "../../servises/ModuleSender/ModuleSender";
 import S3 from "aws-sdk/clients/s3";
+import type { AWSError } from "aws-sdk";
 
 
 const router: Router = express.Router();
@@ -102,7 +103,7 @@ router.post('/new-distributioni-images', multer().none(), async (req: Request, r
       media = Object.assign({}, req.body).media.map((media) => JSON.parse(media))
     }
 
-    console.log(media)
+    // console.log(media)
 
     let keys: string[] = []
     media.forEach((media) => {
@@ -113,17 +114,24 @@ router.post('/new-distributioni-images', multer().none(), async (req: Request, r
       const bucketKey = `${splitedFileName[0]}/${splitedFileName[1]}/${splitedFileName[2]}`
       keys.push(bucketKey)
       const uploadParams = { Bucket: 'tg_media', Key: bucketKey, Body: image }
-      s3.upload({ ...uploadParams }).promise()
+      s3.upload({ ...uploadParams }).send((err, data) => {
+        if (err) {
+          console.log(`[S3]: Error occured: ${data}`)
+        }
+        if (data) {
+          console.log({ s3SaveData: data })
+        }
+      })
     })
 
-    setTimeout(async () => {
-      keys.forEach(async (key) => {
-        const params = { Bucket: 'tg_media', Key: key }
-        const res = await s3.getObject(params).promise()
-        console.log({params})
-        console.log({ savedFiles: res })
-      })
-    }, 5000);
+    // setTimeout(async () => {
+    //   keys.forEach(async (key) => {
+    //     const params = { Bucket: 'tg_media', Key: key }
+    //     const res = await s3.getObject(params).promise()
+    //     console.log({params})
+    //     console.log({ savedFiles: res })
+    //   })
+    // }, 5000);
   
     return res.status(200).json({ message: "Files successfully uploaded" })
   } catch (error) {
