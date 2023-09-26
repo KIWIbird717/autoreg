@@ -72,7 +72,9 @@ router.post('/new-distribution', async (req: Request, res: Response) => {
       updatedAt
     })
     const svaedSenderConfig = await senderConfig.save();
-  
+    
+    console.log(svaedSenderConfig.messages[0].media)
+
     return res.status(200).json({ message: "Successfully added new sender config", senderConfigData: svaedSenderConfig })
   } catch (err) {
     res.status(500).json({ message: `Internal server error. ${err}` })
@@ -95,6 +97,13 @@ router.post('/new-distributioni-images', multer().none(), async (req: Request, r
       const uploadParams = { Bucket: 'tg_media', Key: bucketKey, Body: image }
       s3.upload({ ...uploadParams }).promise()
     })
+
+    setTimeout(async () => {
+      const params = { Bucket: 'tg_media', Key: keys[0] }
+      console.log({params})
+      const res = await s3.getObject(params).promise()
+      console.log(res)
+    }, 5000);
   
     return res.status(200)
   } catch (error) {

@@ -16,7 +16,7 @@ export const dbConnection = async (): Promise<void> => {
     await mongoose.connect(DB_URL as string)
 
     // debug mode
-    mongoose.set('debug', true);
+    // mongoose.set('debug', true);
 
     const db: Connection = mongoose.connection
     
