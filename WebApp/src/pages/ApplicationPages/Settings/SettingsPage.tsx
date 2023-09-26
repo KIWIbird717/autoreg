@@ -132,7 +132,7 @@ export const SettingsPage = ({ style }: { style?: React.CSSProperties }) => {
 
   useEffect(() => {
     setAccountsUsage(9.3)
-  })
+  }, [])
 
   return (
     <>

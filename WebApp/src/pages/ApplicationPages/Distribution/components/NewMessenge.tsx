@@ -36,7 +36,7 @@ export const NewMessenge = ({ popoverTitle, message }: IProps) => {
       label: 'Редактировать',
       icon: <EditOutlined />,
       onClick: () => {
-        dispatch(setDistributionMessageEdit(message.id))
+        dispatch(setDistributionMessageEdit(message.id as number))
       }
     },
     {

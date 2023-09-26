@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { Input, Modal, notification } from "antd";
 import { MCard } from "../../../../../components/Card/MCard";
 import { CardTitle } from "../../../../../components/CardTitle/CardTitle";

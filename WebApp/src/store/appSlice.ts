@@ -80,7 +80,6 @@ export const appSlice = createSlice({
     },
   }
 })
-
 export const {
   setAppPage,
   setAccountsManagerFolder,

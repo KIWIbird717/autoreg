@@ -197,7 +197,7 @@ export interface IAppState {
   distributionFolders: IModuleSenderConfig[] | null
   selectedDistributionFolder: string | null
   newDistributionMessages: {
-    open: React.Key | null
+    open: number | null
     messages:
       {
         id: React.Key | null

@@ -44,7 +44,7 @@ export function Uploader({ fileList, setFileList }: { fileList: UploadFile<any>[
     <section className={`${styles.uploaderWrapper} scroll_bar_style snap-mandatory snap-x croll-smooth flex flex-col gap-1 overflow-auto`}>
       <Title level={5} style={{ margin: 0, marginLeft: 5 }}>Добавить медиа</Title>
       <Upload {...props}>
-        {fileList.length < 8 ? uploadButton : null}
+        {fileList.length < 5 ? uploadButton : null}
       </Upload>
       <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={() => handleCancel(setPreviewOpen)}>
         <img alt="example" style={{ width: '100%' }} src={previewImage} />

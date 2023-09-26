@@ -33,6 +33,7 @@ import accountsFolder from '../../../../../images/accountsFolder.svg'
 import groupFolder from "../../../../../images/groupFolder.svg"
 import { useDispatch } from "react-redux";
 import { addDistributionFolder } from "../../../../../store/appSlice";
+import { message as messageAntd } from "antd";
 
 
 const Context = React.createContext({ name: "Default" });
@@ -168,13 +169,31 @@ export const DistributionSetting = () => {
         })
       })
 
+      // response info
       const upload_url = `${process.env.REACT_APP_SERVER_END_POINT}/moduleSender/new-distributioni-images`
       const uploadedFiles = await axios.post(upload_url, preparedMessages)
-      console.log(uploadedFiles)
+      console.log({uploadedFiles})
+      if (uploadedFiles.status != 200) {
+        messageAntd.error("Ошибка при сохранении файлов")
+      } else {
+        messageAntd.success("Рассылка успешно сохранена")
+      }
 
       dispatch(addDistributionFolder(newFoldersState.data.senderConfigData))
     } catch (err) {
-      console.error(err)
+      let name = ''
+      if (err instanceof Error) name = err.message
+
+      if (name === 'Cannot read properties of null (reading \'toString\')') {
+        messageAntd.error("Заполните поле с сообщением для рассылки во всех сообщениях")
+        return
+      }
+      if (name === 'Network Error') {
+        messageAntd.error("Внутренняя ошибка сервера")
+      }
+
+      console.log(name)
+      console.log(err)
     }
   }
 
@@ -629,6 +648,20 @@ export const DistributionSetting = () => {
             icon={<MailOutlined />}
             loading={buttonLoading}
             onClick={() => handleFieldsValidation()}
+            disabled={
+              !distributionConfig.title.data 
+              || !distributionConfig.description.data 
+              || !distributionConfig.telegramChatLink.data 
+              || !distributionConfig.botsFolder.data?._id 
+              || !distributionConfig.accountsFolder.data?._id 
+              || !distributionConfig.totalMsgAmount.data 
+              || !distributionConfig.msgAmountFrom1Bot.data 
+              || !message.length 
+              ? 
+                true 
+                : 
+                false
+            }
           >
             Добавить рассылку
           </Button>

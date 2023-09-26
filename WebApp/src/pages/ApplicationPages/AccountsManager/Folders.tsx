@@ -52,7 +52,7 @@ export const Folders = () => {
   // Set folders on mail update
   useEffect(() => {
     setDataSource(folders);
-  });
+  }, [userMail]);
 
 
   const deleteFolder = async (record: IHeaderType | null) => {
