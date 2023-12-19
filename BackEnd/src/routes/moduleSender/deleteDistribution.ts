@@ -10,7 +10,6 @@ router.get('/delete-distribution/:mail/:folderId', async (req: Request, res: Res
 
     await ModuleSenderConfig.deleteOne({ _id: folderId })
     const folders = await ModuleSenderConfig.find({ user_owner_mail: mail }).exec()
-    console.log(folders)
     res.status(200).json(folders)
   } catch (err) {
     res.status(500).json(`Internal server error. ${err}`)

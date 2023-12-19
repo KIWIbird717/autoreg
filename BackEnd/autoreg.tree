@@ -1,0 +1,38 @@
+├── .DS_Store
+├── .env
+├── .gitignore
+├── assets
+├── nodemon.json
+├── package-lock.json
+├── package.json
+├── public
+├── README.md
+├── src
+│  ├── global-type.d.ts
+│  ├── index.ts
+│  ├── middlewares
+│  ├── routes
+│  │  ├── echo.router.ts
+│  │  ├── errorList.router.ts
+│  │  ├── index.router.ts
+│  │  ├── moduleSender
+│  │  ├── newAccountsFolder
+│  │  ├── newUser
+│  │  ├── parsingFolder
+│  │  ├── telegram
+│  │  ├── updateEvent
+│  │  └── updateUserData
+│  ├── servises
+│  │  ├── ModuleSender
+│  │  ├── MongoDB
+│  │  ├── RegisterUserDB
+│  │  ├── s3cloud
+│  │  └── SendDbUpdatesWs
+│  └── utils
+│    ├── errorHandler.ts
+│    ├── express
+│    ├── hooks
+│    ├── smsService
+│    ├── telegram
+│    └── webSocket
+└── tsconfig.json

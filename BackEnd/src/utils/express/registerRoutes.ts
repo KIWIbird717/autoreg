@@ -4,18 +4,16 @@ import fs from "fs";
 import path from "path";
 
 /**
- * Reading folder "routes" and add from that page 
- * @todo Add access system, and handler
+ * Reading folder "routes" and adding routes from that page 
  * 
  * How it work:
- * If you need to do "/test1/test"
+ * If you need to make folder "/test1/test"
  * Crete folder inside "routes" with name "test1", how it's look like:
  * 
  * routes/
  *  index.ts
  *  test1/
  *    test.ts
- * 
  */
 
 const wrapRouteHandlers = (router: Router): void => {

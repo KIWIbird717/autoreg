@@ -1,0 +1,194 @@
+├── .DS_Store
+├── .env
+├── .gitignore
+├── autoreg.tree
+├── declarations.d.ts
+├── package-lock.json
+├── package.json
+├── public
+│  ├── favicon.ico
+│  ├── index.html
+│  ├── manifest.json
+│  └── robots.txt
+├── README.md
+├── src
+│  ├── App.tsx
+│  ├── components
+│  │  ├── Card
+│  │  │  ├── MCard.tsx
+│  │  │  └── styles.module.css
+│  │  ├── CardTitle
+│  │  │  └── CardTitle.tsx
+│  │  ├── CustomNoData
+│  │  │  ├── NoAccounts.tsx
+│  │  │  ├── NoDataCountries.tsx
+│  │  │  ├── NoDataDefault.tsx
+│  │  │  ├── NoDataProxies.tsx
+│  │  │  ├── NoKeywordsData.tsx
+│  │  │  └── NoParseFolders.tsx
+│  │  ├── DebounceSelect
+│  │  │  └── DebounceSelect.tsx
+│  │  ├── HeaderComponent
+│  │  │  └── HeaderComponent.tsx
+│  │  ├── notification.tsx
+│  │  ├── Search
+│  │  │  ├── MSearch.tsx
+│  │  │  └── styles.module.css
+│  │  ├── Select
+│  │  │  └── MSelect.tsx
+│  │  ├── SiderComponent
+│  │  │  ├── getItem.tsx
+│  │  │  └── SiderComponent.tsx
+│  │  ├── SliderDrawer
+│  │  │  └── SliderDriwer.tsx
+│  │  └── StaticMessage
+│  │    └── StaticMessage.tsx
+│  ├── global-style
+│  │  ├── card.module.css
+│  │  ├── index.css
+│  │  ├── layoutStyle.ts
+│  │  ├── scroll-bar-style.module.css
+│  │  └── style-colors.module.ts
+│  ├── globalTypes.d.ts
+│  ├── hooks
+│  │  ├── LogOut.tsx
+│  │  └── useContainerDimention.tsx
+│  ├── images
+│  │  ├── accountsFolder.svg
+│  │  ├── admingInviting.svg
+│  │  ├── arrowLottie.json
+│  │  ├── Distribution.svg
+│  │  ├── fileText.svg
+│  │  ├── fullLogo.svg
+│  │  ├── groupFolder.svg
+│  │  ├── img1.svg
+│  │  ├── img2.svg
+│  │  ├── img3.svg
+│  │  ├── logo.svg
+│  │  ├── mail.svg
+│  │  ├── proxyFolder.svg
+│  │  ├── tableCard.svg
+│  │  └── userInvitiong.svg
+│  ├── index.tsx
+│  ├── pages
+│  │  ├── Application.tsx
+│  │  ├── ApplicationPages
+│  │  │  ├── AccountsManager
+│  │  │  │  ├── AccountsManagerPage.tsx
+│  │  │  │  ├── AccountsTable.tsx
+│  │  │  │  ├── Collumns.tsx
+│  │  │  │  ├── FolderRow.tsx
+│  │  │  │  ├── Folders.tsx
+│  │  │  │  ├── ParseAccountsTable.tsx
+│  │  │  │  └── style.module.css
+│  │  │  ├── Autoreg
+│  │  │  │  ├── AddToFolderSettings.tsx
+│  │  │  │  ├── AutoregHeader.tsx
+│  │  │  │  ├── AutoRegPage.tsx
+│  │  │  │  ├── folder-selection-style.module.css
+│  │  │  │  ├── FolserSelection.tsx
+│  │  │  │  ├── ManualSettings.tsx
+│  │  │  │  ├── ModalAddNewFolder.tsx
+│  │  │  │  ├── NewFolderSettings.tsx
+│  │  │  │  └── SmsServicies.tsx
+│  │  │  ├── Distribution
+│  │  │  │  ├── components
+│  │  │  │  │  ├── DistributionInput.tsx
+│  │  │  │  │  ├── MIinput_temp.tsx
+│  │  │  │  │  ├── MInput.tsx
+│  │  │  │  │  └── NewMessenge.tsx
+│  │  │  │  ├── DistrCard
+│  │  │  │  │  ├── DistributionSettingCard
+│  │  │  │  │  │  └── DistributionSetting.tsx
+│  │  │  │  │  └── MyDistributionMessenge
+│  │  │  │  │    └── DistributionMessage.tsx
+│  │  │  │  ├── DistributionFolders
+│  │  │  │  │  ├── DistributionFolders.tsx
+│  │  │  │  │  ├── startDistribution.ts
+│  │  │  │  │  └── TableHeaders.tsx
+│  │  │  │  ├── DistributionPage.tsx
+│  │  │  │  └── MessageEditor
+│  │  │  │    ├── EditorToolbar.tsx
+│  │  │  │    ├── MessageEditor.tsx
+│  │  │  │    ├── SendPreview.tsx
+│  │  │  │    ├── styles.module.scss
+│  │  │  │    ├── TextEditor.tsx
+│  │  │  │    └── Uploader
+│  │  │  │      ├── handlePreview.ts
+│  │  │  │      └── Uploader.tsx
+│  │  │  ├── Inviting
+│  │  │  │  ├── components
+│  │  │  │  │  └── MInput.tsx
+│  │  │  │  ├── InvitingMethod
+│  │  │  │  │  ├── Admin
+│  │  │  │  │  │  └── AdmingInviting.tsx
+│  │  │  │  │  └── User
+│  │  │  │  │    └── UserInviting.tsx
+│  │  │  │  ├── InvitingPage.tsx
+│  │  │  │  └── NoAccountdAD.tsx
+│  │  │  ├── Logs
+│  │  │  │  ├── LogsPage.tsx
+│  │  │  │  ├── SelectOptions.tsx
+│  │  │  │  └── styles.module.scss
+│  │  │  ├── ParsingPage
+│  │  │  │  ├── Accordion
+│  │  │  │  │  ├── AccordionStyled.tsx
+│  │  │  │  │  └── styles.module.css
+│  │  │  │  ├── ParceChatParticipants
+│  │  │  │  │  └── ParseChatParticipants.tsx
+│  │  │  │  ├── ParseByGeo
+│  │  │  │  │  └── ParseByGeo.tsx
+│  │  │  │  ├── ParseByKeywords
+│  │  │  │  │  └── ParseByKeywords.tsx
+│  │  │  │  ├── ParseFolders
+│  │  │  │  │  ├── Accounts.tsx
+│  │  │  │  │  ├── Folders.tsx
+│  │  │  │  │  ├── Groups.tsx
+│  │  │  │  │  ├── ModalAddNewParsingFolder.tsx
+│  │  │  │  │  └── ParseFoldersManager.tsx
+│  │  │  │  ├── ParseFromComments
+│  │  │  │  │  └── ParseFromComments.tsx
+│  │  │  │  ├── ParseGroupsByKeywords
+│  │  │  │  │  └── ParseGroupsByKeywords.tsx
+│  │  │  │  └── ParsingPage.tsx
+│  │  │  ├── ProxyManager
+│  │  │  │  ├── Collumns.tsx
+│  │  │  │  ├── Folders.tsx
+│  │  │  │  ├── ModalAddNewProxy.tsx
+│  │  │  │  ├── ModalAddNewProxyFolder.tsx
+│  │  │  │  ├── ParseAccountsTable.tsx
+│  │  │  │  ├── ProxiesTable.tsx
+│  │  │  │  ├── ProxyManagerPage.tsx
+│  │  │  │  └── style.module.css
+│  │  │  ├── RouterPages.tsx
+│  │  │  ├── Settings
+│  │  │  │  ├── AvatarUploadComponent.tsx
+│  │  │  │  ├── ProxySettingsInput.tsx
+│  │  │  │  └── SettingsPage.tsx
+│  │  │  └── WarmingUp
+│  │  │    ├── Enterance.tsx
+│  │  │    ├── Groups.tsx
+│  │  │    ├── Messages.tsx
+│  │  │    ├── Start.tsx
+│  │  │    └── WarmingUpPage.tsx
+│  │  ├── Logining.tsx
+│  │  └── Registration.tsx
+│  ├── store
+│  │  ├── appSlice.ts
+│  │  ├── store.ts
+│  │  ├── types.d.ts
+│  │  └── userSlice.ts
+│  └── utils
+│    ├── app
+│    │  └── taskCompliteWatcher.ts
+│    ├── dateToFormat.ts
+│    ├── divideArrayIntoGroups.ts
+│    ├── formatDate.ts
+│    ├── formatPhoneNumber.ts
+│    ├── generateTempData.ts
+│    ├── getLastSeenMessage.ts
+│    ├── isValidEmail.ts
+│    ├── isValidNick.ts
+│    └── resetPageData.ts
+├── tailwind.config.js
+└── tsconfig.json

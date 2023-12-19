@@ -163,7 +163,7 @@ const App: React.FC = () => {
 
   /**
    * Chek if user logedin and stay user logedin after page reload
-   * by safe data in localStorage
+   * by saved data in localStorage
    */
   useEffect(() => {
     const token = localStorage.getItem('sessionToken')  // contains user email

@@ -8,7 +8,6 @@ router.get('/get-distributions/:mail', async (req: Request, res: Response) => {
   const { mail } = req.params
   try {
     // chek if user exists
-    console.log(mail)
     const user = await RegisterUserSchema.findOne({ $or: [{mail}] });
     if (!user) return res.status(404).json('User not found')
 

@@ -29,10 +29,6 @@ export const RouterPages = () => {
   const [page, setPage] = useState<IAppState["appPage"]>("1");
   const storedPage = useSelector((state: StoreState) => state.app.appPage);
 
-  // useEffect(() => {
-  //   setPage(storedPage)
-  // }, [storedPage])
-
   const [lastActiveTime, setLastActiveTime] = useState(Date.now());
 
   /**
@@ -64,6 +60,7 @@ export const RouterPages = () => {
     };
   }, [lastActiveTime]);
 
+  // sibar navigation
   useEffect(() => {
     switch (storedPage) {
       case "1":
@@ -105,31 +102,9 @@ export const RouterPages = () => {
     }
   }, [storedPage]);
 
-  // Microservicies
+  // Pages
   return (
     <>
-      {/* {page === '1' && <AutoRegPage />}
-      {page === '2' && <AccountsManagerPage />}
-      {page === '3' && <ProxyManagerPage />}
-      {page === '4' && <WarmingUpPage />}
-      {page === '5' && <DistributionPage />}
-
-      {page === '6' && <InvitingPage />}
-      {page === '7' && <ParsingPage />}
-      {page === '8' && <LogsPage />}
-      {page === '9' && <SettingsPage />} */}
-
-      {/* <AutoRegPage style={{ display: page === '1' ? 'block' : 'none' }} />
-      <AccountsManagerPage style={{ display: page === '2' ? 'block' : 'none' }} />
-      <ProxyManagerPage style={{ display: page === '3' ? 'block' : 'none' }} />
-      <WarmingUpPage style={{ display: page === '4' ? 'block' : 'none' }} />
-      <DistributionPage style={{ display: page === '5' ? 'block' : 'none' }} />
-
-      <InvitingPage style={{ display: page === '6' ? 'block' : 'none' }} />
-      <ParsingPage style={{ display: page === '7' ? 'block' : 'none' }} />
-      <LogsPage style={{ display: page === '8' ? 'block' : 'none' }} />
-      <SettingsPage style={{ display: page === '9' ? 'block' : 'none' }} /> */}
-
       <Routes>
         <Route path={"/"} element={<AutoRegPage />} />
         <Route path={"app/accounts-manager"} element={<AccountsManagerPage />} />

@@ -1,46 +1,106 @@
-# Getting Started with Create React App
+# Autoreg frontend documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Структура проекта
 
-## Available Scripts
+├── .DS_Store
+├── .env
+├── .gitignore
+├── declarations.d.ts
+├── package-lock.json
+├── package.json
+├── public
+├── README.md
+├── src
+│ ├── App.tsx
+│ ├── components **# компоненты и лейауты для страниц**
+│ ├── global-style
+│ ├── globalTypes.d.ts **# declarations**
+│ ├── hooks
+│ ├── images
+│ ├── index.tsx
+│ ├── pages
+│ │ ├── Application.tsx
+│ │ ├── ApplicationPages **# тут расположены все страницы приложения**
+│ │ ├── Logining.tsx
+│ │ └── Registration.tsx
+│ ├── store **# redux store slices**
+│ └── utils
+├── tailwind.config.js
+└── tsconfig.json
 
-In the project directory, you can run:
+## Основные фреймворки и библиотеки
 
-### `npm start`
+**Разработка**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- axios
+- react-router-dom
+- redux
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Стилизация**
 
-### `npm test`
+- styled components
+- sass
+- react-lottie
+- [tailwind](https://tailwindcss.com)
+- [framer-motion](https://www.framer.com/motion/)
+- [antd](https://ant.design)
+- [mui](https://mui.com)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Глобальное хранилище. Redux
 
-### `npm run build`
+#### Общий Обзор
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+В проекте "Autoreg" используется Redux для управления глобальным состоянием приложения. Глобальное хранилище разделено на два основных сегмента: `userSlice` и `appSlice`. Эти сегменты управляют состояниями, связанными соответственно с пользовательскими данными и общими параметрами приложения.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Конфигурация Хранилища
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Хранилище конфигурируется в файле `WebApp/src/store/store.ts`, где используется `configureStore` из `@reduxjs/toolkit`. Хранилище состоит из двух основных слайсов: `user` и `app`, которые представлены соответствующими срезами (`userSlice`, `appSlice`).
 
-### `npm run eject`
+#### Slice `appSlice`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`appSlice` управляет состоянием, связанным с общими аспектами приложения. В состояние включены параметры, такие как текущая страница приложения, папки менеджеров, данные о пользователях и логи.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Slice `userSlice`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`userSlice` управляет состоянием, связанным с пользовательскими данными. Он содержит информацию о пользователях, такую как никнейм, почта, токен доступа и статус входа в систему.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Типы Данных
 
-## Learn More
+В файле `WebApp/src/store/types.d.ts` определены типы данных, используемые в глобальном хранилище.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Описание маршрутизации в проекте
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Общий Обзор
+
+Проект "Autoreg" использует `react-router-dom` для навигации и маршрутизации между различными страницами приложения. Основная структура страниц и маршрутов организована в папке `pages`
+
+#### Страницы и Подстраницы
+
+- **`ApplicationPages`**: Хранит подстраницы приложения, такие как `AccountsManager`, `Autoreg`, `Distribution`, `Inviting`, `Logs`, `ParsingPage`, `ProxyManager`, `Settings`, `WarmingUp`.
+- **`Logining` и `Registration`**: Отдельные страницы для процессов входа в систему и регистрации.
+
+#### Страницы и Подстраницы
+
+- **`ApplicationPages`**: Хранит подстраницы приложения: `AccountsManager`, `Autoreg`, `Distribution`, `Inviting`, `Logs`, `ParsingPage`, `ProxyManager`, `Settings`, `WarmingUp`.
+- **`Logining` и `Registration`**: Отдельные страницы для процессов входа в систему и регистрации.
+
+#### Маршрутизация (`RouterPages.tsx`)
+
+Файл `RouterPages.tsx` управляет всей навигацией в приложении. Он содержит следующие ключевые элементы:
+
+- Импорты страниц `AutoRegPage`, `AccountsManagerPage`, `LogsPage`, `ProxyManagerPage`, `SettingsPage`, `WarmingUpPage`, `DistributionPage`, `ParsingPage`, `InvitingPage`.
+- Маршруты определены внутри компонента `<Routes>`, который включает `<Route>` для каждой страницы.
+- Автоматический выход из системы при превышении максимальной длительности сессии (`MAX_SESSION_DURATION`).
+
+#### Глобальный Wrapper (`Application.tsx`)
+
+Файл `Application.tsx` действует как wrapper (layout) для всего приложения. Основные характеристики:
+
+- Использование `ConfigProvider` и `Layout` из `antd` для создания единого стиля для всех компонентов из библиотеки.
+- Интеграция `SiderComponent`. Сайдбар для навигации по страницам
+
+#### Страницы Входа и Регистрации (`Logining.tsx` и `Registration.tsx`)
+
+- **`Logining.tsx`**: Управляет процессом входа пользователя, включая форму ввода и обработку запросов на вход.
+- **`Registration.tsx`**: Управляет процессом регистрации пользователя, предоставляя форму для ввода данных и отправку запросов на регистрацию.
