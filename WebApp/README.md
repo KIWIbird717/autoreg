@@ -2,6 +2,7 @@
 
 ## Структура проекта
 
+```al
 ├── .DS_Store
 ├── .env
 ├── .gitignore
@@ -27,6 +28,7 @@
 │ └── utils
 ├── tailwind.config.js
 └── tsconfig.json
+```
 
 ## Основные фреймворки и библиотеки
 
