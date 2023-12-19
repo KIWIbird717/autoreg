@@ -18,6 +18,7 @@
 
 ## Структура проекта
 
+```al
 ├── .DS_Store
 ├── .env
 ├── .gitignore
@@ -54,6 +55,7 @@
 │ ├── telegram
 │ └── webSocket
 └── tsconfig.json
+```
 
 ## Архитектура системы
 
