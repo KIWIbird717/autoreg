@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs';
 
 /**
  * Using a hashing algorithm to securely store the user's data in the database. 

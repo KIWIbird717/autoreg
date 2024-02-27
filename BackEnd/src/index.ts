@@ -1,13 +1,16 @@
 import express, { Express, NextFunction, Request } from 'express';
-import registerRoutes from "./utils/express/registerRoutes";
-import Middleware from './middlewares/login.middleware';
-import { dbConnection, dbDisconnection } from './servises/MongoDB/mongoDb.servise';
+import { registerRoutes } from "./utils/express/registerRoutes.js";
+import Middleware from './middlewares/login.middleware.js';
+import { dbConnection, dbDisconnection } from './servises/MongoDB/mongoDb.servise.js';
 
 import dotenv from 'dotenv';
-import path from "path";
-import { WebSocketConnection } from './utils/webSocket/WebSocketConnection';
+import path, { dirname } from "path";
+import { WebSocketConnection } from './utils/webSocket/WebSocketConnection.js';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app: Express = express()
 
@@ -33,7 +36,7 @@ const ServerInitPoint = async (): Promise<void> => {
     })
     
     // Auto-routing system
-    const pagesPath: string = path.join(__dirname, "routes")
+    const pagesPath = path.join(__dirname, "routes")
     registerRoutes(app, pagesPath, "/", () => {
       console.log("\x1b[36m", "[SERVER]: Pages loaded")
     })

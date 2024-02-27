@@ -238,7 +238,7 @@ export const Folders = () => {
         <div>
           <DndContext onDragEnd={onDragEnd}>
             <SortableContext
-              items={dataSource?.map((i) => i.key) || []}
+              items={dataSource?.map((_, index) => index) || []}
               strategy={verticalListSortingStrategy}
             >
               <Table

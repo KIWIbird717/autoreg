@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  webapp: 
+    container_name: "webapp"
+    build:
+      context: ./WebApp
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - ./WebApp/.env
+    ports:
+      - "3000:3000"
+
+  express:
+    container_name: "express"
+    build:
+      context: ./BackEnd
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - ./BackEnd/.env
+    ports:
+      - "8080:8080"
+      - "8081:8081"

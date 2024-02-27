@@ -1,10 +1,8 @@
 import * as path from "path";
 import { promises as fs } from "fs";
 import {
-  IUserRes,
   RegisterUserSchema,
-} from "../servises/RegisterUserDB/registerUserSchema.servise";
-import { updateUser } from "../servises/RegisterUserDB/updateUser.servise";
+} from "../servises/RegisterUserDB/registerUserSchema.servise.js";
 
 export type ErrorService = "telegram" | "sms-service" | "express" | string;
 export type ErrorType = "error" | "warn" | "completed" | string;
@@ -20,7 +18,7 @@ export async function logErrorToFile(
   email?: string // email is now optional
 ): Promise<void> {
   try {
-    const logsDir = path.join(__dirname, "../../../logs");
+    const logsDir = path.join(import.meta.url, "../../../logs");
     const errorLogPath = path.join(
       logsDir,
       `${type}${service.charAt(0).toUpperCase() + service.slice(1)}.txt`

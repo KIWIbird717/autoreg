@@ -1,4 +1,4 @@
-import { logErrorToFile } from "../errorHandler";
+import { logErrorToFile } from "../errorHandler.js";
 import { promises as fs } from "fs";
 import util from "util";
 

@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from "express";
-import * as smsService from "../../utils/smsService/smsActivate";
-import { checkService, countryListMap } from "../../utils/smsService/utils";
+import * as smsService from "../../utils/smsService/smsActivate.js";
+import { checkService, countryListMap } from "../../utils/smsService/utils.js";
 
 const router: Router = express.Router();
 

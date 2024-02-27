@@ -1,11 +1,10 @@
 import express, { Router, Request, Response } from "express";
 import {
   RegisterUserSchema,
-} from "../../servises/RegisterUserDB/registerUserSchema.servise";
+} from "../../servises/RegisterUserDB/registerUserSchema.servise.js";
 import multer from "multer";
-import { ModuleSenderConfig } from "../../servises/ModuleSender/ModuleSender";
-import S3 from "aws-sdk/clients/s3";
-import type { AWSError } from "aws-sdk";
+import { ModuleSenderConfig } from "../../servises/ModuleSender/ModuleSender.js";
+import S3 from "aws-sdk/clients/s3.js";
 
 
 

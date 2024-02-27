@@ -1,7 +1,11 @@
 import type { Application, Router } from "express";
-import { asyncWrapper } from "./errorHandler";
+import { asyncWrapper } from "./errorHandler.js";
 import fs from "fs";
 import path from "path";
+
+const filterDTSFiles = (files: string[]): string[] => {
+  return files.filter(file => !file.endsWith('.d.ts') && !file.endsWith('.js.map'));
+}
 
 /**
  * Reading folder "routes" and adding routes from that page 
@@ -31,10 +35,11 @@ const wrapRouteHandlers = (router: Router): void => {
   });
 };
 
-const registerRoutes = async (app: Application, dirPath: string, prefix: string = "/", callback?: () => void): Promise<void> => {
+export const registerRoutes = async (app: Application, dirPath: string, prefix: string = "/", callback?: () => void): Promise<void> => {
   const files = await fs.promises.readdir(dirPath);
-
-  const filePromises = files.map(async (file) => {
+  
+  const filteredFiles = filterDTSFiles(files);
+  const filePromises = filteredFiles.map(async (file) => {
     const filePath = path.join(dirPath, file);
     const isDirectory = (await fs.promises.stat(filePath)).isDirectory();
 
@@ -60,4 +65,3 @@ const registerRoutes = async (app: Application, dirPath: string, prefix: string 
     callback();
   }
 };
-export default registerRoutes;

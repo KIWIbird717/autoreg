@@ -1,5 +1,5 @@
 import mongoose, { Schema, Model, model, Document } from "mongoose";
-import { ErrorService, ErrorType} from "../../utils/errorHandler";
+import { ErrorService, ErrorType} from "../../utils/errorHandler.js";
 
 
 /**

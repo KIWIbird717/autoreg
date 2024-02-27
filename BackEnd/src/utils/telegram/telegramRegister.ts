@@ -1,11 +1,10 @@
 import { TelegramClient, Api } from "telegram";
-import { StringSession } from "telegram/sessions";
-import { CustomFile } from "telegram/client/uploads";
-import { formatPhoneNumber } from "./utils";
+import { StringSession } from "telegram/sessions/index.js";
+import { CustomFile } from "telegram/client/uploads.js";
 import {
   IAccountsManagerFolder,
   RegisterUserSchema,
-} from "../../servises/RegisterUserDB/registerUserSchema.servise";
+} from "../../servises/RegisterUserDB/registerUserSchema.servise.js";
 import os from "os";
 
 import {
@@ -13,15 +12,15 @@ import {
   getRegistrationCode,
   getTelegramCode,
   submitPhone,
-} from "../smsService/smsActivate";
-import { LogLevel } from "telegram/extensions/Logger";
+} from "../smsService/smsActivate.js";
+import { LogLevel } from "telegram/extensions/Logger.js";
 
 import type {
   telegramUserShema,
   UserSettings,
   WaitingForVerify,
-} from "./telegram";
-import { logErrorToFile } from "../errorHandler";
+} from "./telegram.js";
+import { logErrorToFile } from "../errorHandler.js";
 export class telegramUser {
   private apiId: number;
   private apiHash: string;

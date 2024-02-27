@@ -1,4 +1,4 @@
-import { checkForErrorFromAxiosResponse } from "./smsHandler";
+import { checkForErrorFromAxiosResponse } from "./smsHandler.js";
 import axios from "axios";
 
 const API_KEYS = {

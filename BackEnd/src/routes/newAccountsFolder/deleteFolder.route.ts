@@ -1,7 +1,7 @@
 import express, { Router, Request, Response } from "express";
 import {
   RegisterUserSchema,
-} from "../../servises/RegisterUserDB/registerUserSchema.servise";
+} from "../../servises/RegisterUserDB/registerUserSchema.servise.js";
 
 const router: Router = express.Router()
 

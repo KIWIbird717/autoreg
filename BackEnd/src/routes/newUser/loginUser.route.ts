@@ -2,8 +2,8 @@ import express, { Router, Request, Response } from "express";
 import {
   RegisterUserSchema,
   IUserRes,
-} from "../../servises/RegisterUserDB/registerUserSchema.servise";
-import { customCompareDecription } from "../../utils/hooks/customCompareDecryption.util";
+} from "../../servises/RegisterUserDB/registerUserSchema.servise.js";
+import { customCompareDecription } from "../../utils/hooks/customCompareDecryption.util.js";
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 

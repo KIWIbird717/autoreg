@@ -1,7 +1,7 @@
 import express, { Router, Request, Response } from "express"
-import CreateNewUser from '../../servises/RegisterUserDB/addRegisterUser.servise'
-import { RegisterUserSchema, IUserRes, IRegisterUserSchema } from '../../servises/RegisterUserDB/registerUserSchema.servise';
-import { customCompareDecription } from "../../utils/hooks/customCompareDecryption.util";
+import CreateNewUser from '../../servises/RegisterUserDB/addRegisterUser.servise.js'
+import { RegisterUserSchema, IUserRes, IRegisterUserSchema } from '../../servises/RegisterUserDB/registerUserSchema.servise.js';
+import { customCompareDecription } from "../../utils/hooks/customCompareDecryption.util.js";
 import dotenv from 'dotenv'
 import jwt from "jsonwebtoken";
 

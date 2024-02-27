@@ -26,7 +26,7 @@ type propsType = {
 interface IProxyClearData {
   value: string,
   label: string,
-  children: {value: string | number, label: string}[]
+  children: {value: React.Key, label: string}[]
 }
 
 type errType = "" | "warning" | "error" | undefined

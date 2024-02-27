@@ -1,6 +1,6 @@
-import { Service } from "./smsActivate";
+import { Service } from "./smsActivate.js";
 import { AxiosResponse } from "axios";
-import { errorApiMap, errorsKeys } from "./utils";
+import { errorApiMap, errorsKeys } from "./utils.js";
 
 export type UniversalError =
   | "INVALID_API_KEY"

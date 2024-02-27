@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs';
 
 /**
  * Compare unencrypted and encripted data

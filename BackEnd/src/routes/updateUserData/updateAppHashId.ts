@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from "express";
-import { updateUser } from "../../servises/RegisterUserDB/updateUser.servise";
+import { updateUser } from "../../servises/RegisterUserDB/updateUser.servise.js";
 
 const router: Router = express.Router();
 

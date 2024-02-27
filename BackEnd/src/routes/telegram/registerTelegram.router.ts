@@ -2,13 +2,12 @@ import express, { Router, Request, Response } from "express";
 import {
   addCodeToWaitingForVerify,
   telegramUser,
-} from "../../utils/telegram/telegramRegister";
-import type { UserSettings } from "../../utils/telegram/telegram";
-import { testProxyConnectivity } from "../../utils/telegram/utils";
-import { IUserRes } from "../../servises/RegisterUserDB/registerUserSchema.servise";
-import { RegisterUserSchema } from "../../servises/RegisterUserDB/registerUserSchema.servise";
-import { updateUser } from "../../servises/RegisterUserDB/updateUser.servise";
-import fetch from "node-fetch";
+} from "../../utils/telegram/telegramRegister.js";
+import type { UserSettings } from "../../utils/telegram/telegram.js";
+import { testProxyConnectivity } from "../../utils/telegram/utils.js";
+import { IUserRes } from "../../servises/RegisterUserDB/registerUserSchema.servise.js";
+import { RegisterUserSchema } from "../../servises/RegisterUserDB/registerUserSchema.servise.js";
+import { updateUser } from "../../servises/RegisterUserDB/updateUser.servise.js";
 
 const router: Router = express.Router();
 

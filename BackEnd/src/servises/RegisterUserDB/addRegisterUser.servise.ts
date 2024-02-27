@@ -1,5 +1,5 @@
-import { RegisterUserSchema, IRegisterUserSchema } from './registerUserSchema.servise'
-import { customEncryption } from '../../utils/hooks/customEncryption.util'
+import { RegisterUserSchema, IRegisterUserSchema } from './registerUserSchema.servise.js'
+import { customEncryption } from '../../utils/hooks/customEncryption.util.js'
 
 /**
  * New `User` DB schema 

@@ -1,4 +1,4 @@
-import { IRegisterUserSchema, IUserRes, RegisterUserSchema } from "./registerUserSchema.servise";
+import { IRegisterUserSchema, IUserRes, RegisterUserSchema } from "./registerUserSchema.servise.js";
 
 /**
  *  Update user data. Find user for mail and parse data based on `IUserRes` interface,

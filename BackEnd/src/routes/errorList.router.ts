@@ -1,5 +1,5 @@
 import express, { Router, Request, Response, NextFunction } from "express";
-import { ErrorService, ErrorType } from "../utils/errorHandler";
+import { ErrorService, ErrorType } from "../utils/errorHandler.js";
 import fs from "fs";
 import path from "path";
 
@@ -27,7 +27,7 @@ router.get("/error-list", async (req: Request, res: Response, next: NextFunction
     return;
   }
 
-  const errorLogPath = path.join(__dirname, `../../logs/${type}${service.charAt(0).toUpperCase() + service.slice(1)}.txt`);
+  const errorLogPath = path.join(import.meta.url, `../../logs/${type}${service.charAt(0).toUpperCase() + service.slice(1)}.txt`);
 
   fs.readFile(errorLogPath, "utf-8", (err, data) => {
     if (err) {

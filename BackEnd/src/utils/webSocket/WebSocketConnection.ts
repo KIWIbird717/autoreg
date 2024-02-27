@@ -5,9 +5,8 @@ import dotenv from 'dotenv'
 import { WebSocketServer } from 'ws';
 import WebSocket from 'ws';
 import jwt from 'jsonwebtoken';
-import { SubscribeToDbUpdate } from './SubscribeToDbUpdate';
-import { RegisterUserSchema } from '../../servises/RegisterUserDB/registerUserSchema.servise';
-import { LogsShema } from '../../servises/RegisterUserDB/LogsCollection/logsSchema';
+import { RegisterUserSchema } from '../../servises/RegisterUserDB/registerUserSchema.servise.js';
+import { LogsShema } from '../../servises/RegisterUserDB/LogsCollection/logsSchema.js';
 
 
 dotenv.config()

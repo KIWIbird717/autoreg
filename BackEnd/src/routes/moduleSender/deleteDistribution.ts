@@ -1,6 +1,5 @@
 import express, { Router, Request, Response } from "express";
-import { RegisterUserSchema } from "../../servises/RegisterUserDB/registerUserSchema.servise";
-import { ModuleSenderConfig } from "../../servises/ModuleSender/ModuleSender";
+import { ModuleSenderConfig } from "../../servises/ModuleSender/ModuleSender.js";
 
 const router: Router = express.Router();
 

@@ -1,5 +1,5 @@
-import { Service, serviceList } from "./smsActivate";
-import { UniversalError } from "./smsHandler";
+import { Service, serviceList } from "./smsActivate.js";
+import { UniversalError } from "./smsHandler.js";
 
 type CheckerService = Service | string;
 
