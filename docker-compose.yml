@@ -1,8 +1,8 @@
 version: '3.3'
 
 services:
-  webapp: 
-    container_name: "webapp"
+  autoreg-webapp: 
+    container_name: "autoreg-webapp"
     build:
       context: ./WebApp
       dockerfile: Dockerfile
@@ -12,8 +12,8 @@ services:
     ports:
       - "3000:3000"
 
-  express:
-    container_name: "express"
+  autoreg-express:
+    container_name: "autoreg-express"
     build:
       context: ./BackEnd
       dockerfile: Dockerfile
