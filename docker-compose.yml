@@ -10,7 +10,7 @@ services:
     env_file:
       - ./WebApp/.env
     ports:
-      - "3000:3000"
+      - "3000:3021"
 
   autoreg-express:
     container_name: "autoreg-express"
